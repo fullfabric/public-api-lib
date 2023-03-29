@@ -1,0 +1,18 @@
+{
+  "id": "63e1423e84534665b400025d",
+  "name": "Privacy policy",
+  "published_at": 1675706942000,
+  "published_by_id": null,
+  "published": true,
+  "locales": [
+    {
+      "html": "<p>Your data will be used exclusively for processing your application and will not be transferred to third parties.</p>",
+      "id": "63e1423e84534665b400025c",
+      "locale": "en-GB"
+    }
+  ],
+  "agreement_text": "I agree with the privacy policy",
+  "version": 1,
+  "active": true,
+  "type": "privacy"
+}

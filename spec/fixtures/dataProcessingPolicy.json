@@ -1,0 +1,18 @@
+{
+  "id": "63e1423e84534665b4000265",
+  "name": "Data processing consent",
+  "published_at": 1675706942000,
+  "published_by_id": null,
+  "published": true,
+  "locales": [
+    {
+      "html": "<p>Please ensure that the person has granted valid consent for you to process their data.</p>",
+      "id": "63e1423e84534665b4000264",
+      "locale": "en-GB"
+    }
+  ],
+  "agreement_text": "This person has consented to having their data processed",
+  "version": 1,
+  "active": true,
+  "type": "data_processing"
+}

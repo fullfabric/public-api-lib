@@ -1,4 +1,4 @@
-import getCountries from '../src/get-countries'
+import getCountries from '../../src/api/getCountries'
 
 describe('api.getCountries(opts)', () => {
   it('returns a list of countries', async () => {

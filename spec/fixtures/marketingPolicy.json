@@ -1,0 +1,28 @@
+{
+  "id": "63e1423e84534665b400025f",
+  "name": "Marketing policy",
+  "published_at": 1675706942000,
+  "published_by_id": null,
+  "published": true,
+  "locales": [
+    {
+      "html": "<p>Please opt-in to receive more information and offers on our academic programmes.</p>",
+      "id": "63e1423e84534665b400025e",
+      "locale": "en-GB"
+    }
+  ],
+  "agreement_text": "I agree with the marketing policy",
+  "version": 1,
+  "active": true,
+  "type": "marketing",
+  "options": ["email", "phone", "sms", "mail", "no contact allowed"],
+  "channels": {
+    "email": true,
+    "phone": true,
+    "sms": true,
+    "mail": true
+  },
+  "profile_default_subscription": true,
+  "double_opt_in_enabled": false,
+  "has_subscribed": true
+}
