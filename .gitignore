@@ -1,0 +1,8 @@
+# bundled entrypoints
+dist
+
+# node modules
+node_modules
+
+# MacOS garbage
+.DS_Store

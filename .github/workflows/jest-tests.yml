@@ -1,0 +1,55 @@
+name: Tests and Lint
+
+on:
+  push:
+    branches: ['**']
+    tags-ignore: ["v*"]
+
+env:
+  GITHUB_TOKEN: ${{ secrets.PACKAGE_INSTALL_PA_TOKEN }}
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.x, 18.x]
+        npm-version: [8.19.3, 9.2.0]
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install npm ${{ matrix.npm-version }}
+        run: npm i -g npm@${{ matrix.npm-version }}
+
+      - name: Install modules
+        run: npm ci
+
+      - name: Run tests
+        run: npm test
+
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Use Node.js 18.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+
+      - name: Install npm 9.2.0
+        run: npm i -g npm@9.2.0
+
+      - name: Install modules
+        run: npm ci
+
+      - name: Run lint
+        run: npm run lint
