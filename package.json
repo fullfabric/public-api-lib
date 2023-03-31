@@ -1,6 +1,6 @@
 {
   "name": "@fullfabric/public-api",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Function wrappers for the FullFabric public API.",
   "type": "module",
   "browser": "dist/index.js",
@@ -26,6 +26,10 @@
     "url": "https://github.com/fullfabric/public-api-lib/issues"
   },
   "homepage": "https://github.com/fullfabric/public-api-lib#readme",
+  "dependencies": {
+    "assert": "^2.0.0",
+    "lodash-es": "^4.17.21"
+  },
   "devDependencies": {
     "@fullfabric/eslint-config": "^1.0.0",
     "@fullfabric/prettier-cfg": "^1.0.1",

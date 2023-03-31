@@ -1,4 +1,4 @@
-import getForm from '../src/get-form'
+import getForm from '../../src/api/getForm'
 
 describe('api.getForm(formId)', () => {
   it('returns a list of countries', async () => {

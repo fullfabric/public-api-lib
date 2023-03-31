@@ -1,6 +1,5 @@
-import getCountries from './get-countries'
-import getForm from './get-form'
-
-const api = { getCountries, getForm }
-
-export default api
+export { default as getCountries } from './api/getCountries'
+export { default as getForm } from './api/getForm'
+export { default as getPolicy } from './api/getPolicy'
+export { default as submitForm } from './api/submitForm'
+export { default as ApiError } from './api/ApiError'
