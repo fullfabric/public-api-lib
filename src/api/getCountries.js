@@ -42,8 +42,11 @@ import url from '../utils/url'
 export default async function getCountries(opts = {}) {
   let path = '/countries'
   if (opts.withCode) path += '?with_code=true'
+  const query = opts.withCode ? { with_code: true } : undefined
 
-  const result = await fetch(url(path, opts), { credentials: 'omit' })
+  const result = await fetch(url(path, { ...opts, query }), {
+    credentials: 'omit'
+  })
 
   return await result.json()
 }
