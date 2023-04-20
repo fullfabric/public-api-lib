@@ -10,7 +10,9 @@ export default async function getCascadingDropDownOptions(
     path += `?parent_value=${parentValue}`
   }
 
-  const results = await fetch(url(path, queryOpts), {
+  const query = parentValue && { parent_value: parentValue }
+
+  const results = await fetch(url(path, { ...queryOpts, query }), {
     credentials: 'omit'
   })
   return results.json()
