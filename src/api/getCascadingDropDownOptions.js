@@ -5,10 +5,7 @@ export default async function getCascadingDropDownOptions(
   parentValue,
   queryOpts
 ) {
-  let path = `/api/fields/sub_fields/${field.id}/options`
-  if (parentValue) {
-    path += `?parent_value=${parentValue}`
-  }
+  const path = `/api/fields/sub_fields/${field.id}/options`
 
   const query = parentValue && { parent_value: parentValue }
 

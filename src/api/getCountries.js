@@ -40,8 +40,8 @@ import url from '../utils/url'
  * @returns {Array} An array of country data for dropdown options.
  */
 export default async function getCountries(opts = {}) {
-  let path = '/countries'
-  if (opts.withCode) path += '?with_code=true'
+  const path = '/countries'
+
   const query = opts.withCode && { with_code: true }
 
   const result = await fetch(url(path, { ...opts, query }), {

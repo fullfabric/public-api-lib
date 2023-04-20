@@ -1,6 +1,6 @@
 {
   "name": "@fullfabric/public-api",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "description": "Function wrappers for the FullFabric public API.",
   "type": "module",
   "browser": "dist/index.js",
