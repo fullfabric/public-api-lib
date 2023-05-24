@@ -25,7 +25,7 @@ export default async function submitForm(formId, formData, opts = {}) {
     'formData must be provided and be a FormData instance'
   )
 
-  const digest = await getPageDigest()
+  const digest = await getPageDigest({ sourceType: 'form', sourceId: formId })
 
   const urlOpts = {
     ...pick(opts, ['baseUrl']),
