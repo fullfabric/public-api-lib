@@ -6,10 +6,10 @@ import getPageDigest from '../utils/getPageDigest'
 import url from '../utils/url'
 
 /**
- * Creates a submission to a Form via the API, returning it.
+ * Creates a submission to an Event via the API, returning it.
  *
- * @param {String} formId A Form ID
- * @param {FormData} formData The data to submit to the form.
+ * @param {String} eventId An Event ID
+ * @param {FormData} eventData The data to submit to the event.
  * @param {String} [opts.requestId] Customize the requestId used for anti-spam.
  * @param {String} [opts.baseUrl] The base URL for the API. Set if different
  *                                from the current location.
@@ -18,18 +18,22 @@ import url from '../utils/url'
  *                                            domain than the instance's.
  * @returns {Object} The fetched form.
  */
-export default async function submitForm(formId, formData, opts = {}) {
-  assert.equal(typeof formId, 'string', 'formId must be a string')
+export default async function submitEventResponse(
+  eventId,
+  eventData,
+  opts = {}
+) {
+  assert.equal(typeof eventId, 'string', 'eventId must be a string')
 
   assert.ok(
-    formData instanceof FormData,
-    'formData must be provided and be a FormData instance'
+    eventData instanceof FormData,
+    'eventData must be provided and be a FormData instance'
   )
 
   const digest = await getPageDigest({
     requestId: opts.requestId,
-    sourceType: 'form',
-    sourceId: formId
+    sourceType: 'event',
+    sourceId: eventId
   })
 
   const urlOpts = {
@@ -38,12 +42,12 @@ export default async function submitForm(formId, formData, opts = {}) {
   }
 
   const response = await fetch(
-    url(`/api/forms/${formId}/submissions`, urlOpts),
+    url(`/api/events/${eventId}/responses`, urlOpts),
     {
       credentials: 'same-origin',
       method: 'POST',
       headers: { 'X-FF-DIGEST': digest },
-      body: formData
+      body: eventData
     }
   )
 
