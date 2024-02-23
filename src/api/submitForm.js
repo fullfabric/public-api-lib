@@ -15,7 +15,8 @@ import url from '../utils/url'
  *                                from the current location.
  * @param {String} [opts.externalDomainToken] A token to include in the request
  *                                            if making it from a different
- *                                            domain than the instance's.
+ * @param {String} [opts.credentials] Option for the `fetch` request, defaults
+ *                                    to 'same-origin'.
  * @returns {Object} The fetched form.
  */
 export default async function submitForm(formId, formData, opts = {}) {
@@ -40,7 +41,7 @@ export default async function submitForm(formId, formData, opts = {}) {
   const response = await fetch(
     url(`/api/forms/${formId}/submissions`, urlOpts),
     {
-      credentials: 'same-origin',
+      credentials: opts.credentials || 'same-origin',
       method: 'POST',
       headers: { 'X-FF-DIGEST': digest },
       body: formData
