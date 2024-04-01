@@ -1,10 +1,15 @@
 import ApiError from '../api/ApiError'
 
-export default async function checkResponse(response) {
+export default async function checkResponse(
+  response,
+  { responseType = 'json' } = {}
+) {
   if (response.ok) {
-    return await response.json()
-  } else {
-    const data = await response.json()
-    throw new ApiError(response, data)
+    if (response.status === 204) return null
+    if (responseType === 'json') return await response.json()
+    return response
   }
+
+  const data = await response.json()
+  throw new ApiError(response, data)
 }
