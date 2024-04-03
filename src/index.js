@@ -5,3 +5,5 @@ export { default as getPolicy } from './api/getPolicy'
 export { default as submitEventResponse } from './api/submitEventResponse'
 export { default as submitForm } from './api/submitForm'
 export { default as ApiError } from './api/ApiError'
+
+export * as utils from './utils'
