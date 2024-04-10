@@ -46,7 +46,6 @@ export default async function getCountries(opts = {}) {
   const query = opts.withCode && { with_code: true }
   const headers = headersUtil(opts)
 
-
   const result = await fetch(url(path, { ...opts, query }), {
     credentials: 'omit',
     headers
