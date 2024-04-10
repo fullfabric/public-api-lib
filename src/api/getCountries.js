@@ -1,5 +1,5 @@
 import url from '../utils/url'
-import { default as headersUtil } from '../utils/headers'
+import headersUtil from '../utils/headers'
 
 /**
  * Fetches country data from the backend to build Country dropdowns.
