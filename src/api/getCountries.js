@@ -1,4 +1,5 @@
 import url from '../utils/url'
+import { default as headersUtil } from '../utils/headers'
 
 /**
  * Fetches country data from the backend to build Country dropdowns.
@@ -43,9 +44,12 @@ export default async function getCountries(opts = {}) {
   const path = '/countries'
 
   const query = opts.withCode && { with_code: true }
+  const headers = headersUtil(opts)
+
 
   const result = await fetch(url(path, { ...opts, query }), {
-    credentials: 'omit'
+    credentials: 'omit',
+    headers
   })
 
   return await result.json()
