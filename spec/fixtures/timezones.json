@@ -1,0 +1,56 @@
+[
+  {
+    "name": "(GMT-10:00) Hawaii",
+    "tzname": "Pacific/Honolulu",
+    "value": "Hawaii",
+    "offset": -1000
+  },
+  {
+    "name": "(GMT-05:00) Bogota",
+    "tzname": "America/Bogota",
+    "value": "Bogota",
+    "offset": -500
+  },
+  {
+    "name": "(GMT-01:00) Azores",
+    "tzname": "Atlantic/Azores",
+    "value": "Azores",
+    "offset": -100
+  },
+  {
+    "name": "(GMT+00:00) Lisbon",
+    "tzname": "Europe/Lisbon",
+    "value": "Lisbon",
+    "offset": 0
+  },
+  {
+    "name": "(GMT+00:00) UTC",
+    "tzname": "Etc/UTC",
+    "value": "UTC",
+    "offset": 0
+  },
+  {
+    "name": "(GMT+02:00) Riga",
+    "tzname": "Europe/Riga",
+    "value": "Riga",
+    "offset": 200
+  },
+  {
+    "name": "(GMT+04:30) Kabul",
+    "tzname": "Asia/Kabul",
+    "value": "Kabul",
+    "offset": 450
+  },
+  {
+    "name": "(GMT+09:00) Osaka",
+    "tzname": "Asia/Tokyo",
+    "value": "Osaka",
+    "offset": 900
+  },
+  {
+    "name": "(GMT+10:00) Melbourne",
+    "tzname": "Australia/Melbourne",
+    "value": "Melbourne",
+    "offset": 1000
+  }
+]

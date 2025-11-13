@@ -2,13 +2,17 @@ import { matchRequestUrl, rest } from 'msw'
 import { setupServer } from 'msw/node'
 
 import countriesFixture from '../fixtures/countries.json'
+import timezonesFixture from '../fixtures/timezones.json'
 import formFixture from '../fixtures/form.json'
 import marketingPolicyFixture from '../fixtures/marketingPolicy.json'
 import privacyPolicyFixture from '../fixtures/privacyPolicy.json'
 import dataProcessingPolicyFixture from '../fixtures/dataProcessingPolicy.json'
 
 const handlers = [
-  rest.get('/countries', async (_req, res, ctx) =>
+  rest.get('/api/reference_data/timezones', async (_req, res, ctx) =>
+    res(ctx.json(timezonesFixture))
+  ),
+  rest.get('/api/reference_data/countries', async (_req, res, ctx) =>
     res(ctx.json(countriesFixture))
   ),
   rest.get('/api/forms/:formId', async (_req, res, ctx) =>

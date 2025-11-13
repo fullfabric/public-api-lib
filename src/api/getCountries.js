@@ -40,13 +40,17 @@ import headersUtil from '../utils/headers'
  * @param {Boolean} [opts.withCode] Whether to include the country code in the response.
  * @returns {Array} An array of country data for dropdown options.
  */
-export default async function getCountries(opts = {}) {
-  const path = '/countries'
+export default async function getCountries({
+  baseUrl = null,
+  withCode = false,
+  locale = null
+} = {}) {
+  const path = '/api/reference_data/countries'
 
-  const query = opts.withCode && { with_code: true }
-  const headers = headersUtil(opts)
+  const query = withCode ? { with_code: true } : undefined
+  const headers = locale ? headersUtil({ locale }) : undefined
 
-  const result = await fetch(url(path, { ...opts, query }), {
+  const result = await fetch(url(path, { baseUrl, query }), {
     credentials: 'omit',
     headers
   })
