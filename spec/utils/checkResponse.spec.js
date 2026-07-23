@@ -53,3 +53,20 @@ test('throws exception with error from json when status is not ok', async () => 
     })
   )
 })
+
+test('falls back to status when the error body is not JSON', async () => {
+  const response = {
+    ok: false,
+    status: 429,
+    statusText: 'Too Many Requests',
+    json: () => Promise.reject(new SyntaxError('Unexpected token'))
+  }
+
+  await expect(checkResponse(response)).rejects.toThrow(
+    expect.objectContaining({
+      message: 'Too Many Requests',
+      status: 429,
+      data: null
+    })
+  )
+})
