@@ -11,6 +11,9 @@ export default async function checkResponse(
     return response
   }
 
-  const data = await response.json()
+  // Error responses can come from layers that don't emit the app's JSON shape
+  // (nginx, Rack::Attack, the WAF, CloudFront). Tolerate a non-JSON body so the
+  // caller gets a proper ApiError (with .status) instead of a thrown SyntaxError.
+  const data = await response.json().catch(() => null)
   throw new ApiError(response, data)
 }
