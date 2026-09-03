@@ -14,6 +14,7 @@ import url from '../utils/url'
  * @param {String} [opts.externalDomainToken] A token to include in the request
  *                                            if making it from a different
  *                                            domain than the instance's.
+ * @param {Object} [opts.query] Extra query params to append to the request URL.
  * @returns {Object} The fetched form.
  */
 export default async function submitForm(formId, formData, opts = {}) {
@@ -26,7 +27,7 @@ export default async function submitForm(formId, formData, opts = {}) {
 
   const urlOpts = {
     ...pick(opts, ['baseUrl']),
-    query: { external_domain_token: opts.externalDomainToken }
+    query: { external_domain_token: opts.externalDomainToken, ...opts.query }
   }
 
   const response = await fetch(
