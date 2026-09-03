@@ -25,4 +25,49 @@ describe('api.submitForm(formId)', () => {
     expect(response.form).toBeDefined()
     expect(response.message).toBe('Thank you.')
   })
+
+  /**
+   * msw cannot read a FormData request body (see the TODO above), so these
+   * stub fetch to assert on the URL the request is made to.
+   */
+  describe('request URL', () => {
+    let oldFetch
+    let requestedUrl
+
+    beforeEach(() => {
+      oldFetch = global.fetch
+
+      global.fetch = async (url) => {
+        requestedUrl = new URL(url)
+        return { ok: true, json: async () => ({}) }
+      }
+    })
+
+    afterEach(() => {
+      global.fetch = oldFetch
+    })
+
+    it('appends the given query params', async () => {
+      await submitForm('formId', new FormData(), {
+        externalDomainToken: 'a-token',
+        query: { utm_source: 'newsletter', utm_medium: 'email' }
+      })
+
+      const { searchParams } = requestedUrl
+
+      expect(searchParams.get('external_domain_token')).toBe('a-token')
+      expect(searchParams.get('utm_source')).toBe('newsletter')
+      expect(searchParams.get('utm_medium')).toBe('email')
+    })
+
+    it('only sends the external domain token when no query params are given', async () => {
+      await submitForm('formId', new FormData(), {
+        externalDomainToken: 'a-token'
+      })
+
+      expect([...requestedUrl.searchParams]).toEqual([
+        ['external_domain_token', 'a-token']
+      ])
+    })
+  })
 })
